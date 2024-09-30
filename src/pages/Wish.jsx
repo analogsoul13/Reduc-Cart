@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeFromWishlist } from '../redux/slices/wishSlice'
 
 function Wish() {
+
+    const dispatch = useDispatch()
 
     const { wishlist } = useSelector((state) => state.wishReducer)
 
@@ -26,6 +29,14 @@ function Wish() {
                                                     <h5 className="fw-bolder">{item?.title}</h5>
                                                     ${item?.price}
                                                 </div>
+                                            </div>
+                                            <div className="card-footer d-flex justify-content-between rounded-bottom ">
+                                                    <button onClick={()=>dispatch(removeFromWishlist(item))} className="btn btn-secondary bg-dark shadow">
+                                                    <i className="fa-solid fa-xl fa-heart-circle-xmark" style={{color: "#ff0000",}} />
+                                                    </button>
+                                                    <button className="btn btn-secondary shadow">
+                                                        <i className="fa-solid fa-cart-plus fa-xl" />
+                                                    </button>
                                             </div>
                                         </div>
                                     </div>

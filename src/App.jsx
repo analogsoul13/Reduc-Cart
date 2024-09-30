@@ -6,6 +6,8 @@ import Cart from './pages/Cart'
 import Wish from './pages/Wish'
 import { Routes,Route } from 'react-router-dom'
 import Header from './components/Header'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/wish' element={<Wish/>}/>
     </Routes>
+    <ToastContainer />
     </>
   )
 }

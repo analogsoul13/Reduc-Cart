@@ -23,7 +23,7 @@ function Home() {
         <header className="bg-dark py-5">
             <div className="container px-4 px-lg-5 my-5">
                 <div className="text-center text-white">
-                    <h1 className="display-4 fw-bolder">Shop in style</h1>
+                    <h1 className="display-4 text-white fw-bolder">Shop in style</h1>
                     <p className="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
                 </div>
             </div>
@@ -60,8 +60,8 @@ function Home() {
                                                             ${item?.price}
                                                     </div>
                                                 </div>
-                                                <div className="card-footer d-flex bg-dark justify-content-between rounded-bottom ">
-                                                    <button onClick={()=>dispatch(addToWishlist(item))} className="btn btn-secondary shadow">
+                                                <div className="card-footer d-flex justify-content-between rounded-bottom ">
+                                                    <button onClick={()=>dispatch(addToWishlist(item))} className="btn btn-secondary bg-dark shadow">
                                                         <i className="fa-solid fa-heart-circle-plus fa-xl" style={{color: "#ff0000",}} />
                                                     </button>
                                                     <button className="btn btn-secondary shadow">
