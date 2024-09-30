@@ -31,7 +31,8 @@ function Wish() {
                                                 </div>
                                             </div>
                                             <div className="card-footer d-flex justify-content-between rounded-bottom ">
-                                                    <button onClick={()=>dispatch(removeFromWishlist(item))} className="btn btn-secondary bg-dark shadow">
+                                                {/* item remove */}
+                                                    <button onClick={()=>dispatch(removeFromWishlist(item?.id))} className="btn btn-secondary bg-dark shadow">
                                                     <i className="fa-solid fa-xl fa-heart-circle-xmark" style={{color: "#ff0000",}} />
                                                     </button>
                                                     <button className="btn btn-secondary shadow">
