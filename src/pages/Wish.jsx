@@ -2,10 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeFromWishlist } from '../redux/slices/wishSlice'
+import { addToCart } from '../redux/slices/cartSlice'
 
 function Wish() {
 
     const dispatch = useDispatch()
+
+    // addToCart
+    const handleAddToCart=(product)=>{
+        dispatch(addToCart(product))
+        dispatch(removeFromWishlist(product.id))
+    }
 
     const { wishlist } = useSelector((state) => state.wishReducer)
 
@@ -35,7 +42,7 @@ function Wish() {
                                                     <button onClick={()=>dispatch(removeFromWishlist(item?.id))} className="btn btn-secondary bg-dark shadow">
                                                     <i className="fa-solid fa-xl fa-heart-circle-xmark" style={{color: "#ff0000",}} />
                                                     </button>
-                                                    <button className="btn btn-secondary shadow">
+                                                    <button onClick={()=>handleAddToCart(item)} className="btn btn-secondary shadow">
                                                         <i className="fa-solid fa-cart-plus fa-xl" />
                                                     </button>
                                             </div>

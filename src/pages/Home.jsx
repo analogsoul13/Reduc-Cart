@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchProductsThunk } from '../redux/slices/productSlice'
 import { Spinner } from 'react-bootstrap'
 import { addToWishlist } from '../redux/slices/wishSlice'
+import { addToCart } from '../redux/slices/cartSlice'
 
 
 
@@ -64,7 +65,7 @@ function Home() {
                                                     <button onClick={()=>dispatch(addToWishlist(item))} className="btn btn-secondary bg-dark shadow">
                                                         <i className="fa-solid fa-heart-circle-plus fa-xl" style={{color: "#ff0000",}} />
                                                     </button>
-                                                    <button className="btn btn-secondary shadow">
+                                                    <button onClick={()=>dispatch(addToCart(item))} className="btn btn-secondary shadow">
                                                         <i className="fa-solid fa-cart-plus fa-xl" />
                                                     </button>
                                                 </div>

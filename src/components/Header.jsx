@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 function Header() {
 
   const {wishlist}=useSelector((state)=>state.wishReducer)
+  const {cart}=useSelector((state)=>state.cartReducer)
 
   return (
     <>
@@ -34,7 +35,10 @@ function Header() {
             <Link to={'/cart'} className='btn btn-outline-secondary'>
             <i className="fa-solid fa-md fa-cart-shopping" style={{color: "#152239",}} />
             {' '}
-                Cart           
+                Cart 
+                <span className='badge bg-dark badge-pill ms-1'>
+                  {cart?.length}  
+                </span>          
             </Link>
           </div>
         </Container>
