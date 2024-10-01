@@ -20,7 +20,7 @@ function App() {
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/wish' element={<Wish/>}/>
     </Routes>
-    <ToastContainer />
+    <ToastContainer position='bottom-center' />
     </>
   )
 }
