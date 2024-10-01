@@ -36,9 +36,12 @@ const cartSlice=createSlice({
                 toast.warning("Product Removed From Cart")
             }
             existing.quantity--
+        },
+        checkout(state){
+            state.cart=[]
         }
     }
 })
 
 export default cartSlice.reducer
-export const {addToCart,removeFromCart,increase,decrease}=cartSlice.actions
+export const {addToCart,removeFromCart,increase,decrease,checkout}=cartSlice.actions

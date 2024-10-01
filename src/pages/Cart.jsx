@@ -1,12 +1,27 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Table } from 'react-bootstrap'
-import { removeFromCart,increase,decrease } from '../redux/slices/cartSlice'
+import { removeFromCart,increase,decrease,checkout } from '../redux/slices/cartSlice'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 function Cart() {
 
     const dispatch=useDispatch()
+
+    // To redirect after checkout
+    const nav=useNavigate()
+
+    //Cart
     const {cart}=useSelector((state)=>state.cartReducer)
+    
+    // Checkout
+    const handleCheckout =()=>{
+        dispatch(checkout())
+        nav('/')
+        toast.success("Cart Checked Out")
+
+    }
 
     return (
         <>
@@ -68,7 +83,7 @@ function Cart() {
                         </p>
                     </div>
                     <div className="d-grid mt-4">
-                        <button className="btn btn-dark">Checkout</button>
+                        <button onClick={handleCheckout} className="btn btn-dark">Checkout</button>
                     </div>
                 </div>
             </div>
