@@ -22,6 +22,9 @@ const productSlice=createSlice({
         },
         prevPage(state){
             state.currentPage--
+        },
+        search(state,action){
+            state.product = state.product.filter(item=>item.title.toLowerCase().includes(action.payload.toLowerCase()))
         }
 
     },
@@ -43,4 +46,4 @@ const productSlice=createSlice({
 })
 
 export default productSlice.reducer
-export const {nextPage, prevPage}=productSlice.actions
+export const {nextPage, prevPage, search}=productSlice.actions
