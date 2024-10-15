@@ -5,6 +5,7 @@ import { fetchProductsThunk } from '../redux/slices/productSlice'
 import { Spinner } from 'react-bootstrap'
 import { addToWishlist } from '../redux/slices/wishSlice'
 import { addToCart } from '../redux/slices/cartSlice'
+import { nextPage, prevPage } from '../redux/slices/productSlice'
 
 
 
@@ -13,11 +14,32 @@ import { addToCart } from '../redux/slices/cartSlice'
 function Home() {
     const dispatch = useDispatch()
 
-    const { product, loading, error } = useSelector((state) => state.productReducer)
+    const { product, loading, error, productPerPage, currentPage } = useSelector((state) => state.productReducer)
+
+    // Pagination
+    const totalPages=product.length/productPerPage
+    const lastProductIndex=productPerPage*currentPage
+    const firstProductIndex=lastProductIndex-productPerPage
+    const visibleProducts=product.slice(firstProductIndex,lastProductIndex)
+
 
     useEffect(() => {
         dispatch(fetchProductsThunk())
     }, [])
+
+    // pagination
+    const next=()=>{
+        if(currentPage<totalPages){
+            dispatch(nextPage())
+        }           
+    }
+
+    const prev=() => {
+        if(currentPage>1){
+            dispatch(prevPage())
+        }
+    }
+
     //console.log(product)
     return (
         <>
@@ -49,7 +71,7 @@ function Home() {
                                 :
                                 <>
                                 {
-                                    product?.map(item => (
+                                    visibleProducts?.map(item => (
                                         <div className="col mb-5">
                                             <div className="card h-100 shadow bg-body rounded border">
                                                 <Link to={`/view/${item.id}`}>
@@ -81,7 +103,19 @@ function Home() {
                 </div>
             </div>
         </section>
-
+        
+        {/* Pagination */}
+        <div className='text-center mb-5'>
+            <button onClick={prev} className='btn'>
+            <i className="fa-solid fa-2xl fa-circle-chevron-left" />
+            </button>
+            {' '}
+            {currentPage}/{totalPages}
+            {' '}
+            <button onClick={next} className='btn'>
+            <i className="fa-solid fa-2xl fa-circle-chevron-right" />
+            </button>
+        </div>
 
 
 

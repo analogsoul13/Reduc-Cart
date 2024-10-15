@@ -8,7 +8,7 @@ function Wish() {
 
     const dispatch = useDispatch()
 
-    // addToCart
+    // addToCart from wishlist
     const handleAddToCart=(product)=>{
         dispatch(addToCart(product))
         dispatch(removeFromWishlist(product.id))

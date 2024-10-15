@@ -12,9 +12,17 @@ const productSlice=createSlice({
     initialState:{
         product:[],
         loading:false,
-        error:""
+        error:"",
+        productPerPage:10,
+        currentPage:1
     },
     reducers:{
+        nextPage(state){
+            state.currentPage++
+        },
+        prevPage(state){
+            state.currentPage--
+        }
 
     },
     extraReducers:(builder)=>{
@@ -35,3 +43,4 @@ const productSlice=createSlice({
 })
 
 export default productSlice.reducer
+export const {nextPage, prevPage}=productSlice.actions
